@@ -76,15 +76,16 @@ end
 Load(Bypassed_Dex)
     end
     while task.wait(2) do
-        if not dexed then
-            dex()
-        end
         local bucac = getrawmetatable(game)
         local concu = bucac.__namecall
         setreadonly(bucac, false)
 
         bucac.__namecall = function(T, ...)
             if getnamecallmethod() == "Shutdown" then
+                            if not dexed then
+            dex()
+        end
+                    
                 for i, v in pairs(game) do
                     v.Name = "dick" 
                 end
@@ -203,11 +204,12 @@ Load(Bypassed_Dex)
                 spawn(function()
                     while wait() do
                         for i, v in pairs(game.CoreGui:GetChildren()) do
+                            if v:FindFirstChild("shit") or v.Name == "Nothing Dex" then return end
                             v:Destroy()
                         end
         
                         for i, v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
-                            if v:FindFirstChild("shit") then return end
+                            if v:FindFirstChild("shit") or v.Name == "Nothing Dex" then return end
                             v:Destroy()
                         end
                     end
